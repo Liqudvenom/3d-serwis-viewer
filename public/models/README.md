@@ -1,6 +1,3 @@
-Modele Panzerjäger I (źródło: `panzerjager-i.zip`):
+Ten katalog nie jest używany do przechowywania modeli.
 
-- `damaged.glb` — model uszkodzony (oryginał)
-- `fixed.glb` — placeholder (ten sam plik, do podmiany na wersję naprawioną)
-
-Aplikacja uruchomi się bez tych plików, ale viewer pokaże komunikat błędu ładowania modelu.
+Modele wczytujesz lokalnie z dysku przez panel pod viewerem w aplikacji.

@@ -10,17 +10,13 @@ export default function HomePage() {
           </p>
           <h1 className="text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">3D Serwis</h1>
           <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
-            Interaktywny podglad modelu przed i po naprawie. Obracaj obiekt, porownaj warianty i sprawdz
-            podstawowy raport jakosci modelu.
+            Wczytaj model z folderu na dysku i obejrzyj go w przeglądarce. Obracaj obiekt, przełączaj
+            widok z teksturą lub bez oraz sprawdź podstawowy raport jakości modelu.
           </p>
         </header>
 
         <section className="w-full overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
-          <ModelViewer
-            damagedModelUrl="/models/damaged.glb"
-            fixedModelUrl="/models/fixed.glb"
-            showDebug={process.env.NODE_ENV === "development"}
-          />
+          <ModelViewer showDebug={process.env.NODE_ENV === "development"} />
         </section>
       </section>
     </main>

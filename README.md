@@ -1,12 +1,14 @@
 # 3D Serwis
 
-Interaktywna aplikacja Next.js do prezentacji modelu 3D przed i po naprawie. Viewer korzysta z Babylon.js,
-pozwala przełączać wariant uszkodzony/naprawiony i pokazuje panel `Quality Report`.
+Interaktywna aplikacja Next.js do lokalnego podglądu modeli 3D. Viewer korzysta z Babylon.js,
+pozwala wczytać model z folderu użytkownika (bez wysyłania plików na serwer), przełączać widok
+z teksturą lub bez oraz pokazuje panel `Quality Report`.
 
 ## Wymagania
 
 - Node.js 18.17 lub nowszy
 - npm
+- Przeglądarka z obsługą `File API` (Chrome, Edge, Firefox)
 
 ## Instalacja
 
@@ -24,25 +26,22 @@ Aplikacja będzie dostępna pod adresem pokazanym przez Next.js, zwykle `http://
 
 ## Modele 3D
 
-Modele pochodzą z archiwum `panzerjager-i.zip` (Panzerjäger I, World of Tanks asset pack).
+Modele **nie są** dołączone do repozytorium ani zapisywane w `public/models/`. Wczytujesz je lokalnie:
 
-| Plik | Źródło | Opis |
-|------|--------|------|
-| `public/models/damaged.glb` | `source/G21_PanzerJager_I.glb` | Model uszkodzony (oryginał z ZIP) |
-| `public/models/fixed.glb` | ten sam plik | **Placeholder** — kopia `damaged.glb` do czasu przygotowania wersji „naprawionej” |
+1. Kliknij **Wybierz folder** lub przeciągnij folder do strefy pod viewerem.
+2. Folder musi zawierać **jeden** plik `.glb` lub `.gltf`.
+3. Dla `.gltf` z zewnętrznymi teksturami dołącz cały folder (np. `textures/`, pliki `.bin`).
+4. Pliki są ładowane w pamięci przeglądarki jako blob URL — nic nie trafia na serwer.
 
-Oba warianty to obecnie **ten sam plik** (~15,3 MB). GLB zawiera osadzone tekstury PBR (base color, normal, RMAO); osobne pliki PNG z folderu `textures/` nie są wymagane przez viewer.
+### Przełącznik materiałów
 
-Jeśli plików brakuje, aplikacja nadal się uruchomi, a komponent pokaże komunikat błędu ładowania modelu.
+- **Textura** — oryginalne materiały PBR z modelu
+- **Bez textury** — jednolity szary materiał podglądowy
 
-### Dodawanie modeli lokalnie
+### Przykład
 
-Jeśli katalog `public/models/` jest pusty (np. po klonowaniu repozytorium bez binariów), rozpakuj `panzerjager-i.zip` i skopiuj:
-
-```bash
-copy source\G21_PanzerJager_I.glb public\models\damaged.glb
-copy source\G21_PanzerJager_I.glb public\models\fixed.glb
-```
+Rozpakuj archiwum z modelem (np. `panzerjager-i.zip`) i wskaż folder zawierający plik `.glb`
+lub `.gltf` wraz z teksturami.
 
 ## Build produkcyjny
 
